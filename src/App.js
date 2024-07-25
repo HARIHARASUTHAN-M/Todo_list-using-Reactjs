@@ -5,7 +5,6 @@ import Header from "./Header";
 import { useState, useEffect } from "react";
 import SearchItem from "./SearchItem";
 
-
 function App() {
 
   //const API_URL = "http://localhost:3500/items";
@@ -14,29 +13,16 @@ function App() {
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
 
-
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try{
-      JSON.parse(localStorage.getItem('todo_list'))
-    }catch(err){
-      setError(err.message)
-    }finally{
-      setLoading(false)
-    }
-
-    //fetch data from temporary json server
-
-    /*const fetchData = async () => {
+    const fetchItems = () => {
       try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-          throw Error("Data not received");
+        const storedItems = JSON.parse(localStorage.getItem('todo_list'));
+        if (storedItems) {
+          setItems(storedItems);
         }
-        const list = await response.json();
-        setItems(list);
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -44,8 +30,8 @@ function App() {
         setLoading(false);
       }
     };
-    setTimeout(()=>{async () =>  await fetchData() }, 2000);*/
 
+    setTimeout(()=>fetchItems(),2000);
   }, []);
 
   const handleSubmit = (e) => {
@@ -58,13 +44,13 @@ function App() {
   }
 
   const addItem = async (item) => {
-    try{
+    try {
       const id = items.length ? items[items.length - 1].id + 1 : 1;
       const addList = { id, checked: false, item };
       const newList = [...items, addList];
       setItems(newList);
-      localStorage.setItem("todo_list",JSON.stringify(newList))
-    }catch(err){
+      localStorage.setItem("todo_list", JSON.stringify(newList))
+    } catch (err) {
       setError(err.message)
     }
     //post data to temporary json server
@@ -84,16 +70,16 @@ function App() {
   }
 
   const handleChange = async (id) => {
-    try{
+    try {
       const newList = items.map((item) => (
         item.id === id ? { ...item, checked: !item.checked } : item
       ))
       setItems(newList);
-      localStorage.setItem("todo_list",JSON.stringify(newList))
-    }catch(err){
+      localStorage.setItem("todo_list", JSON.stringify(newList))
+    } catch (err) {
       setError(err.message)
     }
-    
+
     //update data from temporary json server
 
     /*const list = newList.filter((item) => item.id === id);
@@ -113,13 +99,13 @@ function App() {
   }
 
   const handleClick = async (id) => {
-    try{
+    try {
       const newList = items.filter((item) => (
         item.id !== id
       ));
       setItems(newList);
-      localStorage.setItem("todo_list",JSON.stringify(newList))
-    }catch(err){
+      localStorage.setItem("todo_list", JSON.stringify(newList))
+    } catch (err) {
       setError(err.message)
     }
 
