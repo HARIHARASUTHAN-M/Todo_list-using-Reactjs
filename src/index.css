@@ -1,13 +1,210 @@
-body {
+/* Resetting default styles */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Setting base font size */
+html {
+  font-size: 22px;
+}
+
+/* Basic body styles */
+body {
+  min-height: 100vh;
+  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Main app container */
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #006d6d;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+/* Header styles */
+header {
+  width: 100%;
+  padding: 0.5em;
+  background-color: #006d6d;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #004d4d;
+}
+
+/* Main content area */
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 1em;
+}
+
+/* Footer styles */
+footer {
+  width: 100%;
+  padding: 0.5em;
+  background-color: #006d6d;
+  color: #ffffff;
+  display: grid;
+  place-content: center;
+  border-top: 1px solid #004d4d;
+}
+
+/* List styles */
+ul {
+  width: 100%;
+  list-style: none;
+  padding: 0.25rem;
+}
+
+ul li::before {
+  content: "\200B";
+}
+
+/* Item styles */
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+}
+
+.item:first-child {
+  margin-top: 0;
+}
+
+/* Checkbox styles */
+.item input[type="checkbox"] {
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  min-height: 48px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  text-align: center;
+}
+
+.item input[type="checkbox"]:focus + label {
+  text-decoration: underline;
+}
+
+/* Label styles */
+.item > label {
+  font-size: 0.75rem;
+  flex-grow: 1;
+}
+
+/* Icon styles */
+.item svg {
+  width: 48px;
+  min-width: 48px;
+  height: 36px;
+  font-size: 1rem;
+  color: #006d6d;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.item svg:focus, 
+.item svg:hover {
+  color: #b30000;
+  outline: none;
+}
+
+/* Add form styles */
+.addForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.5rem 0 0;
+  padding: 0 0.5rem 0.25rem;
+  border-bottom: 1px solid #eee;
+}
+
+.addForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.addForm input[type='text'] {
+  flex-grow: 1;
+  max-width: calc(100% - 50px);
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+/* Button styles */
+button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #006d6d;
+  color: #ffffff;
+  cursor: pointer;
+  border: 1px solid #004d4d;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:focus, 
+button:hover {
+  color: #ffffff;
+  background-color: #004d4d;
+  outline: none;
+}
+
+/* Search form styles */
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.25rem 0 0;
+  padding: 0 0.5rem 0.25rem;
+  border-bottom: 1px solid #eee;
+}
+
+.searchForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.searchForm input[type='text'] {
+  flex-grow: 1;
+  max-width: 100%;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  outline: none;
+  border: 1px solid #ccc;
 }
